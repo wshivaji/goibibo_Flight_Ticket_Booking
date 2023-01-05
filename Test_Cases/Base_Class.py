@@ -6,7 +6,8 @@ from selenium.webdriver.support import expected_conditions
 
 class initialization:
     #driver = webdriver.Chrome()
-
+    lg = object()
+    sr = object()
     def Implicit_wait(self, seconds):
         self.driver.implicitly_wait(seconds)
 

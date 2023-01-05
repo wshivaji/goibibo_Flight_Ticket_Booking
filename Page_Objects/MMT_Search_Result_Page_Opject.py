@@ -15,7 +15,6 @@ class search_result:
 
     def search_flight(self):
         self.driver.find_element(By.XPATH, self.okay_btn_by_xpath).click()
-        pass
 
     def custom_range(self):
         range_slider = self.driver.find_element(By.XPATH, "//div[@class='rangeslider__handle']")

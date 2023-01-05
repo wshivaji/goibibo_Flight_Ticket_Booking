@@ -13,7 +13,7 @@ class get_traveller_info:
             #df = pd.read_csv('Nifty_50.csv')
             #df = pd.DataFrame()
             #df = df.reindex(columns=['Symbol','LastRate','High','Low','PClose','ChgPcnt','Chg','TotalQty','Time'])
-            df = pd.read_csv('Test_Data/traveller_information.csv')
+            df = pd.read_csv('.//Test_Data//traveller_information.csv')
             print(df)
             x = df.shape
             counter = len(df)

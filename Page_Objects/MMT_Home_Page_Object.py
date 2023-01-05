@@ -54,7 +54,7 @@ class login:
         print("Source: ", source, " element: ", txt)
         text_box = self.driver.find_element(By.XPATH, self.from_city_by_xpath)
         text_box.send_keys(source)
-
+        time.sleep(2)
         source_list = self.driver.find_elements(By.XPATH, "//li[@role='option']")
         id_1 = ""
         for element in source_list:
@@ -75,7 +75,7 @@ class login:
         print("Destination: ", destination, " element: ", txt1)
         text1_to = self.driver.find_element(By.XPATH, self.to_city_by_xpath)
         text1_to.send_keys(destination)
-
+        time.sleep(2)
         destination_list = self.driver.find_elements(By.XPATH, "//li[@role='option']")
         id_1 = ""
         for element in destination_list:

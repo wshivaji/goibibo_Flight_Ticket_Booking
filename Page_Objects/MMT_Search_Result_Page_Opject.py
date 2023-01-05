@@ -18,9 +18,8 @@ class search_result:
         pass
 
     def custom_range(self):
-        ActionChains(self.driver).drag_and_drop_by_offset(self.driver.find_element(By.XPATH, "//div[@class='rangeslider__handle']"), 0, 40).perform()
-        # slider = self.driver.find_element(By.XPATH, "//div[@class='rangeslider__handle']")
-        # slider.set_Attribute("aria-valuemax")
+        range_slider = self.driver.find_element(By.XPATH, "//div[@class='rangeslider__handle']")
+        ActionChains(self.driver).drag_and_drop_by_offset(range_slider, -120, 0).perform()
 
     def select_1_stop(self):
         self.driver.find_element(By.XPATH, self.one_stop_checkbox).click()

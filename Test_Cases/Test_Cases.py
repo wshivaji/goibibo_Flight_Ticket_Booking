@@ -36,7 +36,7 @@ class Test_Cases(initialization):
             self.lg.click_flight_btn()
             self.lg.click_oneWay_option()
             self.lg.enter_from("Aurangabad")
-            self.lg.enter_to("mumbai")
+            self.lg.enter_to("Bengluru")
             self.lg.dep_date()
             self.lg.travellers()
             self.lg.regular_btn()

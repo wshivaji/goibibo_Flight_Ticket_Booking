@@ -1,6 +1,32 @@
 import openpyxl
+import pandas as pd
+
+#df = pd.DataFrame()
+#df.read_csv(".\\Test_Data\\traveller_information.csv")
 
 
+#print(df)
+class get_traveller_info:
+
+    def read_csv(self):
+        try:
+            #df = pd.read_csv('Nifty_50.csv')
+            #df = pd.DataFrame()
+            #df = df.reindex(columns=['Symbol','LastRate','High','Low','PClose','ChgPcnt','Chg','TotalQty','Time'])
+            df = pd.read_csv('Test_Data/traveller_information.csv')
+            print(df)
+            x = df.shape
+            counter = len(df)
+            print(counter)
+            print(x)
+            rowLabels = df.index.tolist()
+            col_names=df.columns.values
+            print(col_names)
+        except Exception as ex:
+            print(ex)
+
+
+get_traveller_info().read_csv()
 def getRowCount(file, sheetName):
     workbook = openpyxl.load_workbook(file)
     sheet = workbook[sheetName]

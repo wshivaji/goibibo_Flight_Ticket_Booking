@@ -1,0 +1,3 @@
+Execute Test: pytest -s -v  ".\\Test_Cases\\Test_Cases.py"
+
+Generate Reports: pytest --html=".\\Reports\\Test_Report.html"

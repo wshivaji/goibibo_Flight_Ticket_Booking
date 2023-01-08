@@ -3,10 +3,14 @@ import pytest
 import Page_Objects.MMT_Home_Page_Object
 import Page_Objects.MMT_Search_Result_Page_Opject
 from Utilities.Read_Config_Info import Read_Config as Rc
+from selenium.webdriver.common.by import By
 from Utilities.Custom_Logger import log_gen as logger
 from Test_Cases.Base_Class import initialization
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
+from Utilities.Excel_Utils import get_data_from_CSV
+import pandas as pd
+from Test_Cases.Base_Class import get_list
 
 """This is test case class and all the test case scripts included here"""
 
@@ -16,65 +20,79 @@ from selenium import webdriver
 class Test_Cases(initialization):
     """This is fixture function"""
 
+    def setup_method(self):
+        try:
+            self.driver = initialization.driver
 
-    def setup(self):
-        chrome_options = Options()
-        chrome_options.add_experimental_option("detach", True)
-        self.driver = webdriver.Chrome(options=chrome_options)
+            self.lg = Page_Objects.MMT_Home_Page_Object.Home_page(self.driver, self.Explicit_wait, self.Implicit_wait)
+            self.driver.maximize_window()
+            self.driver.set_page_load_timeout(50)
+            self.driver.set_script_timeout(30)
+            self.driver.implicitly_wait(30)
 
-        self.lg = Page_Objects.MMT_Home_Page_Object.Home_page(self.driver, self.Explicit_wait, self.Implicit_wait)
-        self.driver.maximize_window()
-        self.driver.set_page_load_timeout(50)
-        self.driver.set_script_timeout(30)
-        self.driver.implicitly_wait(30)
-        self.driver.get(Rc.read_url())
+            self.sr = Page_Objects.MMT_Search_Result_Page_Opject.search_result(self.driver, self.Explicit_wait,
+                                                                               self.Implicit_wait)
 
-        self.sr = Page_Objects.MMT_Search_Result_Page_Opject.search_result(self.driver, self.Explicit_wait,
-                                                                           self.Implicit_wait)
+        except Exception as ex:
+            print("file read exception: ", ex)
 
     # ------------------------------------
 
-    """This is Teest case 1 code"""
+    """This is Test case 1 code"""
 
     def test_TC001(self):
         try:
             """Test case TC001 include testing flow of searching flight"""
             # ------------------------------------
-
+            self.driver.get(Rc.read_url())
             self.lg.click_front_cover()
             self.lg.scroll()
             self.lg.click_flight_btn()
             self.lg.click_oneWay_option()
-            self.lg.enter_from("Aurangabad")
-            self.lg.enter_to("Bengluru")
+            self.lg.enter_from("jaipur")
+            self.lg.enter_to("bhopal")
             self.lg.dep_date()
-            self.lg.travellers()
+            self.lg.travellers(6, 3, 2)
             self.lg.regular_btn()
             self.lg.search_btn()
-
+            self.driver.back()
             # --------------------------------------
         except Exception as ex:
             print("test_TC001 exception generated ", ex)
 
-    def test_TC002(self):
+    """Test Case TC002 code (parameterized) """
+    @pytest.mark.parametrize('src, dest, adult, children, infant', get_list())
+    def test_TC002(self, src, dest, adult, children, infant):
         try:
+            # self.driver.get(Rc.read_url())
+
+            self.driver.switch_to.new_window()
+            self.driver.get(Rc.read_url())
             self.lg.click_front_cover()
             self.lg.scroll()
             self.lg.click_flight_btn()
             self.lg.click_oneWay_option()
-            self.lg.enter_from("Aurangabad")
-            self.lg.enter_to("Bengluru")
-            self.lg.dep_date()
-            self.lg.travellers()
+            self.lg.enter_from(src)
+            self.lg.enter_to(dest)
+            self.lg.dep_date_1()
+            self.lg.travellers(adult, children, infant)
             self.lg.regular_btn()
             self.lg.search_btn()
-
             self.sr.search_flight()
             self.sr.custom_range()
             self.sr.select_1_stop()
             self.sr.get_flight_data()
+            self.driver.back()
         except Exception as ex:
             print("text_TC002 has encountered an exception:  ", ex)
 
-    def teardown(self):
-        self.driver.quit()
+    """Tear down method """
+    def teardown_method(self):
+        try:
+            pass
+           # self.driver.quit()
+        except Exception as ex:
+            print("Teardown method got as exception: ", ex)
+
+
+"""**************************************** End *****************************************************"""

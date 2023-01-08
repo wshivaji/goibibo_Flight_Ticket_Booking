@@ -45,6 +45,7 @@ class Test_Cases(initialization):
             """Test case TC001 include testing flow of searching flight"""
             # ------------------------------------
             self.driver.get(Rc.read_url())
+            assert self.driver.current_url == "https://www.makemytrip.com/flights/"
             self.lg.click_front_cover()
             self.lg.scroll()
             self.lg.click_flight_btn()
@@ -68,6 +69,7 @@ class Test_Cases(initialization):
 
             self.driver.switch_to.new_window()
             self.driver.get(Rc.read_url())
+            assert self.driver.current_url == "https://www.makemytrip.com/flights/"
             self.lg.click_front_cover()
             self.lg.scroll()
             self.lg.click_flight_btn()

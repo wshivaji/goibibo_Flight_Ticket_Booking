@@ -133,10 +133,10 @@ class Home_page:
     def dep_date(self):
         try:
             date_pic = self.driver.find_element(By.XPATH, self.departure_dropdown_by_xpath)
-            self.ex_wait(2, date_pic)
+            self.ex_wait(1, date_pic)
             date_pic.click()
             date = self.driver.find_element(By.XPATH, self.departure_date_by_xpath)
-            self.ex_wait(2, date)
+            #self.ex_wait(1, date)
             date.click()
         except Exception as ex:
             print("dep_date: ", ex)
@@ -144,7 +144,7 @@ class Home_page:
     def dep_date_1(self):
         try:
             date = self.driver.find_element(By.XPATH, self.departure_date_by_xpath)
-            self.ex_wait(2, date)
+            self.ex_wait(1, date)
             date.click()
         except Exception as ex:
             print("dep_date_1: ", ex)

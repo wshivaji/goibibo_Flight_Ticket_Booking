@@ -86,7 +86,8 @@ class Home_page:
             text_box = self.driver.find_element(By.XPATH, self.from_city_by_xpath)
             text_box.send_keys(source)
             time.sleep(2)
-            source_list = self.driver.find_elements(By.XPATH, "//li[@role='option']")
+            source_list = self.driver.find_elements(By.XPATH, "//div//label[@for='fromCity']/parent::div//div//ul//li")
+            #"//li[@role='option']"
             id_1 = ""
             for element in source_list:
                 if source in element.text:
@@ -112,7 +113,8 @@ class Home_page:
             text1_to = self.driver.find_element(By.XPATH, self.to_city_by_xpath)
             text1_to.send_keys(destination)
             time.sleep(2)
-            destination_list = self.driver.find_elements(By.XPATH, "//li[@role='option']")
+            destination_list = self.driver.find_elements(By.XPATH, "//div//label[@for='toCity']/parent::div//div//ul//li")
+            #//li[@role='option']
             id_1 = ""
             for element in destination_list:
                 if destination in element.text:

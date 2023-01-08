@@ -52,7 +52,7 @@ class Test_Cases(initialization):
             self.lg.click_oneWay_option()
             self.lg.enter_from("Jaipur")
             self.lg.enter_to("Bhopal")
-            self.lg.dep_date()
+            self.lg.dep_date("25/01/2023")
             self.lg.travellers(2, 1, 2)
             self.lg.regular_btn()
             self.lg.search_btn()
@@ -62,8 +62,8 @@ class Test_Cases(initialization):
             print("test_TC001 exception generated ", ex)
 
     """Test Case TC002 code (parameterized) """
-    @pytest.mark.parametrize('src, dest, adult, children, infant', get_list())
-    def test_TC002(self, src, dest, adult, children, infant):
+    @pytest.mark.parametrize('src, dest, adult, children, infant,  departure_date', get_list())
+    def test_TC002(self, src, dest, adult, children, infant, departure_date):
         try:
             # self.driver.get(Rc.read_url())
 
@@ -76,7 +76,8 @@ class Test_Cases(initialization):
             self.lg.click_oneWay_option()
             self.lg.enter_from(src)
             self.lg.enter_to(dest)
-            self.lg.dep_date_1()
+            self.lg.dep_date(departure_date)
+            #self.lg.dep_date_1(departure_date)
             self.lg.travellers(adult, children, infant)
             self.lg.regular_btn()
             self.lg.search_btn()

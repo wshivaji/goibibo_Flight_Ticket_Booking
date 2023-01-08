@@ -1,11 +1,11 @@
 Sr. No.,source,destination,departure ,adults,children,infant
 1,Aurangabad,Mumbai,16/01/2023,2,2,0
-2,Aurangabad,Hyderabad,17/01/2023,3,1,1
-3,Hyderabad,Bangalore,18/01/2023,4,3,2
-4,Bangalore ,Tirupati,19/01/2023,1,4,1
-5,Kochi,Bangalore,20/01/2023,5,6,3
-6,Pune ,Hyderabad,21/01/2023,8,4,4
-7,Kolkata,Ranchi,22/01/2023,7,0,1
-8,Nagpur ,Mumbai,23/01/2023,4,7,3
-9,Mumbai,Goa,24/01/2023,9,5,4
-10,Goa,Hyderabad,25/01/2023,6,3,1
+2,Jaipur,Delhi,17/01/2023,3,1,1
+3,Hyderabad,Bengaluru,18/01/2023,4,3,2
+4,Bengaluru,Tirupati,19/01/2023,1,4,1
+5,Kochi,Bengaluru,20/01/2023,2,1,2
+6,Pune,Hyderabad,21/01/2023,1,3,0
+7,Kolkata,Nagpur,22/01/2023,2,0,1
+8,Nagpur,Mumbai,23/01/2023,1,1,0
+9,Mumbai,Goa,24/01/2023,3,2,1
+10,Goa,Hyderabad,25/01/2023,1,2,0

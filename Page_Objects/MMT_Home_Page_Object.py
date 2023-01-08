@@ -1,4 +1,5 @@
 import time
+from datetime import datetime as dt
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -24,7 +25,7 @@ class Home_page:
     to_textbox_by_xpath = "//label[@for='toCity']"
     to_city_by_xpath = "//input[@placeholder='To']"
     departure_dropdown_by_xpath = "//label[@for='departure']"
-    departure_date_by_xpath = "//div[@class='DayPicker-Day' and @aria-label='Mon Jan 23 2023']"
+    departure_date_by_xpath = "//div[@class='DayPicker-Day' and @aria-label='"
     traveller_dropdown_by_xpath = "//label[@for='travellers']"
     adult_by_xpath = "//li[@data-cy='adults-"
     children_by_xpath = "//li[@data-cy='children-"
@@ -130,9 +131,13 @@ class Home_page:
             print("enter_to", ex)
 
     """This is select departure date selection event """
-    def dep_date(self):
+    def dep_date(self, str_date):
         try:
-            date_pic = self.driver.find_element(By.XPATH, self.departure_dropdown_by_xpath)
+            str_date = str(str_date)
+            date_object = dt.strptime(str_date, "%d/%m/%Y")
+            date = date_object.strftime("%a %b %d %Y")
+            date_xpath = f"{self.departure_date_by_xpath}{date}']"
+            date_pic = self.driver.find_element(By.XPATH, date_xpath)
             self.ex_wait(1, date_pic)
             date_pic.click()
             date = self.driver.find_element(By.XPATH, self.departure_date_by_xpath)
@@ -141,9 +146,13 @@ class Home_page:
         except Exception as ex:
             print("dep_date: ", ex)
 
-    def dep_date_1(self):
+    def dep_date_1(self, str_date):
         try:
-            date = self.driver.find_element(By.XPATH, self.departure_date_by_xpath)
+            #str_date = str(str_date)
+            date_object = dt.strptime(str_date, "%d/%m/%Y")
+            date = date_object.strftime("%a %b %d %Y")
+            date_xpath = f"{self.departure_date_by_xpath}{date}']"
+            date = self.driver.find_element(By.XPATH, date_xpath)
             self.ex_wait(1, date)
             date.click()
         except Exception as ex:

@@ -24,7 +24,9 @@ class search_result:
     """Click on search button to get list of flights available"""
     def search_flight(self):
         try:
-            self.driver.find_element(By.XPATH, self.okay_btn_by_xpath).click()
+            btn = self.driver.find_element(By.XPATH, self.okay_btn_by_xpath)
+            self.ex_wait(1, btn)
+            btn.click()
         except Exception as ex:
             print("search_flight: ", ex)
 
@@ -32,6 +34,7 @@ class search_result:
     def custom_range(self):
         try:
             range_slider = self.driver.find_element(By.XPATH, "//div[@class='rangeslider__handle']")
+            self.ex_wait(1, range_slider)
             ActionChains(self.driver).drag_and_drop_by_offset(range_slider, -120, 0).perform()
         except Exception as ex:
             print("custom_range: ", ex)
@@ -39,7 +42,9 @@ class search_result:
     """this is select 1 stop flight check box to set preference"""
     def select_1_stop(self):
         try:
-            self.driver.find_element(By.XPATH, self.one_stop_checkbox).click()
+            check = self.driver.find_element(By.XPATH, self.one_stop_checkbox)
+            self.ex_wait(1, check)
+            check.click()
         except Exception as ex:
             print("select_1_stop: ", ex)
 
@@ -53,8 +58,8 @@ class search_result:
             for d in flights_data:
                 x = list()
                 x.append(d.split("\n"))
-                if len(x) > 14:
-                    x = x[:14]
+                if len(x) > 12:
+                    x = x[:12]
                 self.df = self.df.append(pd.DataFrame(x, columns=self.df.columns))
                 print("List: ", x, " TYPE: ", type(x))
                 print(self.df)

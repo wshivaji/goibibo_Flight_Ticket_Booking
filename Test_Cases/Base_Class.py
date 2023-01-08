@@ -52,9 +52,10 @@ def get_list():
     adult = [i for i in df["adults"]]
     children = [i for i in df["children"]]
     infant = [i for i in df["infant"]]
+    departure_date = [i for i in df["departure "]]
     print(src)
     print(dest)
-    list_zip = zip(src, dest, adult, children, infant)
+    list_zip = zip(src, dest, adult, children, infant, departure_date)
     city_list = list(list_zip)
     print(city_list)
     return city_list

@@ -18,7 +18,9 @@ Make_My_Trip_Flight_Ticket_Booking
     |           +-----(MMT_Search_Result_Page_Object.py)
     +-----[Reports]
     |           |
-    |           +-----(Test_Report.html)
+    |           +-----(output.json)
+    |           +-----(pytest_html_report.html)
+    |           +-----(Test_Report)
     +-----[Screenshots]
     +-----[Test_Cases]
     |           |

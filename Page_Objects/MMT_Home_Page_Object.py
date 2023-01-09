@@ -88,7 +88,7 @@ class Home_page:
             text_box.send_keys(source)
             time.sleep(2)
             source_list = self.driver.find_elements(By.XPATH, "//div//label[@for='fromCity']/parent::div//div//ul//li")
-            #"//li[@role='option']"
+
             id_1 = ""
             for element in source_list:
                 if source in element.text:
@@ -99,7 +99,7 @@ class Home_page:
                     element.click()
                     break
             print("Source id: ", id_1)
-            # self.driver.find_element(By.ID, id_1).click()
+
         except Exception as ex:
             print("enter_from: ", ex)
 
@@ -115,7 +115,7 @@ class Home_page:
             text1_to.send_keys(destination)
             time.sleep(2)
             destination_list = self.driver.find_elements(By.XPATH, "//div//label[@for='toCity']/parent::div//div//ul//li")
-            #//li[@role='option']
+
             id_1 = ""
             for element in destination_list:
                 if destination in element.text:
@@ -141,14 +141,14 @@ class Home_page:
             self.ex_wait(1, date_pic)
             date_pic.click()
             date = self.driver.find_element(By.XPATH, self.departure_date_by_xpath)
-            #self.ex_wait(1, date)
+
             date.click()
         except Exception as ex:
             print("dep_date: ", ex)
 
     def dep_date_1(self, str_date):
         try:
-            #str_date = str(str_date)
+
             date_object = dt.strptime(str_date, "%d/%m/%Y")
             date = date_object.strftime("%a %b %d %Y")
             date_xpath = f"{self.departure_date_by_xpath}{date}']"

@@ -45,7 +45,7 @@ class Test_Cases(initialization):
             """Test case TC001 include testing flow of searching flight"""
             # ------------------------------------
             self.driver.get(Rc.read_url())
-            #assert self.driver.current_url == "https://www.makemytrip.com/flights/"
+
             self.lg.click_front_cover()
             self.lg.scroll()
             self.lg.click_flight_btn()
@@ -65,11 +65,8 @@ class Test_Cases(initialization):
     @pytest.mark.parametrize('src, dest, adult, children, infant,  departure_date', get_list())
     def test_TC002(self, src, dest, adult, children, infant, departure_date):
         try:
-            # self.driver.get(Rc.read_url())
-
             self.driver.switch_to.new_window()
             self.driver.get(Rc.read_url())
-            #assert self.driver.current_url == "https://www.makemytrip.com/flights/"
             self.lg.click_front_cover()
             self.lg.scroll()
             self.lg.click_flight_btn()
@@ -77,11 +74,9 @@ class Test_Cases(initialization):
             self.lg.enter_from(src)
             self.lg.enter_to(dest)
             self.lg.dep_date(departure_date)
-            #self.lg.dep_date_1(departure_date)
             self.lg.travellers(adult, children, infant)
             self.lg.regular_btn()
             self.lg.search_btn()
-            #self.sr.search_flight()
             self.sr.custom_range()
             self.sr.select_1_stop()
             self.sr.get_flight_data()

@@ -9,7 +9,7 @@ import pandas as pd
 
 class initialization:
 
-    """Initailize objects which will be used by all the test cases across framework"""
+    """Initialize objects which will be used by all the test cases across framework"""
     lg = object()
     sr = object()
     df = pd.DataFrame()
@@ -31,7 +31,6 @@ class initialization:
     """set Explicit wait function to be used by all the web elements where ever it is needed"""
     def Explicit_wait(self, seconds, element):
         wait = WebDriverWait(self.driver, seconds)
-        # ele = wait.until(expected_conditions.visibility_of_element_located(element))
         ele = wait.until(expected_conditions.element_to_be_clickable(element))
 
 
